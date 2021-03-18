@@ -1,4 +1,4 @@
-
+xx
 # How to install a Bitcoin Core full node on a Linux machine using Docker
 
 ## Nota
