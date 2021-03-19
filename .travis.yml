@@ -10,6 +10,6 @@ before_install:
   - docker ps -a
 
 script:
-  /bin/sh ls -al
+  /bin/sh -c getpeercount
 
 
