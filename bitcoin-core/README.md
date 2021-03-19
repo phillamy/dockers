@@ -1,6 +1,9 @@
 xx
 # How to install a Bitcoin Core full node on a Linux machine using Docker
 
+
+![Build Status](https://travis-ci.org/phillamy/dockers.svg?branch=dev).
+
 ## Nota
 
 Don't just copy and paste.  Understand what you are doing.
