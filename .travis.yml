@@ -1,4 +1,4 @@
-language: shell
+language: sh
 
 services:
   - docker
