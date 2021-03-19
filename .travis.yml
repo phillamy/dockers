@@ -1,8 +1,11 @@
+
 services:
   - docker
 
 before_install:
   - cd bitcoin-core
   - docker build --no-cache -t cyphernode/bitcoin:x86_64-0.21.0 --build-arg ARCH=x86_64 .
-  - docker run -d -p 8333:8333 cyphernode/bitcoin:x86_64-0.21.0 /bin/sh -c "ls"
+  - docker run -d -p 8333:8333 cyphernode/bitcoin:x86_64-0.21.0 /bitcoind
   - docker ps -a
+
+  script: skip
