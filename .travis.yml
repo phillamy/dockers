@@ -9,4 +9,4 @@ before_install:
   - docker run -d -p 8333:8333 cyphernode/bitcoin:x86_64-0.21.0 /bin/sh -c "getpeercount"
   - docker ps -a
 
-  script: skip
+script: skip
