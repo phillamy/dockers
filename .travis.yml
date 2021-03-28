@@ -6,11 +6,11 @@ services:
 before_install:
   - cd bitcoin-core
   - docker build --no-cache -t cyphernode/bitcoin:x86_64-0.21.0 --build-arg ARCH=x86_64 .
-  - docker run -d -p 8333:8333 cyphernode/bitcoin:x86_64-0.21.0 /bin/sh -c "bitcoind"
+  - docker run -d -p 8333:8333 cyphernode/bitcoin:x86_64-0.21.0 /bin/sh -c "bitcoind -regtest -deamon"
   - docker ps -a
 
 
 script:
-  /bin/sh -c getpeercount
+  /bin/sh -c bitcoin-cli -regtest generatetoaddress 101 $(bitcoin-cli -regtest getnewaddress)
 
 
