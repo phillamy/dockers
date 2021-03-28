@@ -11,6 +11,6 @@ before_install:
 
 
 script:
-  /bin/sh -c bitcoin-cli -regtest generatetoaddress 101 $(bitcoin-cli -regtest getnewaddress)
+  - docker run -rm /bin/sh -c bitcoin-cli -regtest generatetoaddress 101 $(bitcoin-cli -regtest getnewaddress)
 
 
