@@ -15,8 +15,8 @@ before_install:
   - sleep 15
   - echo TEsting again after 15 sec
   - docker ps -a --no-trunc
-  - docker ps -q --filter 'exited=1'
-  - docker logs $(docker ps -q --filter 'exited=1')
+  - docker ps -a -q --filter 'exited=1'
+  - docker logs $(docker ps -a -q --filter 'exited=1')
   
 
 script:
