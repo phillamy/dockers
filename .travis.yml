@@ -8,8 +8,8 @@ before_install:
   - echo "$DOCKER_PASSWORD"
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker build --no-cache -t cyphernode/bitcoin:x86_64-0.21.0 --build-arg ARCH=x86_64 .
-  - docker run -d -p 8333:8333 cyphernode/bitcoin:x86_64-0.21.0 /bin/sh -c "ls; bitcoind -regtest -deamon"
-  - docker run cyphernode/bitcoin:x86_64-0.21.0 /bin/sh -c "pwd"
+  - docker run -d -p 8333:8333 cyphernode/bitcoin:x86_64-0.21.0 /bin/sh 'ls; bitcoind -regtest -deamon'
+  - docker run cyphernode/bitcoin:x86_64-0.21.0 /bin/sh "pwd"
   - docker ps -a --no-trunc
   - echo TEsting again
   - docker ps -a --no-trunc
