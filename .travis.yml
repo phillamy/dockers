@@ -12,6 +12,5 @@ before_install:
   - docker ps -a
 
 script:
-  - docker run -rm /bin/sh -c bitcoin-cli -regtest generatetoaddress 101 $(bitcoin-cli -regtest getnewaddress)
-
+  - docker exec -it $(docker ps -q -f "name=cyphernode_bitcoin") bitcoin-cli -regtest generatetoaddress 101 $(bitcoin-cli -regtest getnewaddress)
 
