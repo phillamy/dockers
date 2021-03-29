@@ -14,6 +14,7 @@ before_install:
   - docker ps -a --no-trunc
   - sleep 15
   - echo TEsting again after 15 sec
+  - docker ps -a --no-trunc
   - docker ps -q --filter 'exited=1'
   - docker logs $(docker ps -q --filter 'exited=1')
   
@@ -22,7 +23,7 @@ script:
   - docker ps -a
   - docker ps -q
   - docker ps -q -f "health=healthy"
-  - docker exec -it $(docker ps -q -f "health=healthy") bitcoin-cli getpeerinfo
+ # - docker exec -it $(docker ps -q -f "health=healthy") bitcoin-cli getpeerinfo
   
   #-regtest generatetoaddress 101 $(bitcoin-cli -regtest getnewaddress)
 
