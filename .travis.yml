@@ -1,0 +1,31 @@
+language: sh
+
+services:
+  - docker
+
+before_install:
+  - cd bitcoin-core
+  - echo "$DOCKER_PASSWORD"
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker build --no-cache -t cyphernode/bitcoin:x86_64-0.21.0 --build-arg ARCH=x86_64 .
+  - docker run -d -p 8333:8333 cyphernode/bitcoin:x86_64-0.21.0 /bin/sh 'ls -lR'
+ # - docker run -d -p 8333:8333 cyphernode/bitcoin:x86_64-0.21.0 /bin/sh './bitcoind -regtest -deamon'
+ #- docker run cyphernode/bitcoin:x86_64-0.21.0 /bin/sh "pwd; ls"
+  - docker ps -a --no-trunc
+  - echo TEsting again
+  - docker ps -a --no-trunc
+  - sleep 15
+  - echo TEsting again after 15 sec
+  - docker ps -a --no-trunc
+  - docker ps -a -q --filter 'exited=1'
+  - docker logs $(docker ps -a -q --filter 'exited=1')
+  
+
+script:
+  - docker ps -a
+  - docker ps -q
+  - docker ps -q -f "health=healthy"
+ # - docker exec -it $(docker ps -q -f "health=healthy") bitcoin-cli getpeerinfo
+  
+  #-regtest generatetoaddress 101 $(bitcoin-cli -regtest getnewaddress)
+

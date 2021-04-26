@@ -9,10 +9,10 @@
 image() {
   local arch=$1
 
-  echo "Building and pushing cyphernode/clightning for $arch tagging as ${version}..."
+  echo "Building and pushing cyphernode/specter for $arch tagging as ${version}..."
 
-  docker build --no-cache -t cyphernode/clightning:${arch}-${version} . \
-  && docker push cyphernode/clightning:${arch}-${version}
+  docker build --no-cache -t cyphernode/specter:${arch}-${version} . \
+  && docker push cyphernode/specter:${arch}-${version}
 
   return $?
 }
@@ -20,14 +20,14 @@ image() {
 manifest() {
   echo "Creating and pushing manifest for cyphernode/clightning for version ${version}..."
 
-  docker manifest create cyphernode/clightning:${version} \
-                         cyphernode/clightning:${x86_docker}-${version} \
-                         cyphernode/clightning:${arm_docker}-${version} \
-                         cyphernode/clightning:${aarch64_docker}-${version} \
-  && docker manifest annotate cyphernode/clightning:${version} cyphernode/clightning:${arm_docker}-${version} --os linux --arch ${arm_docker} \
-  && docker manifest annotate cyphernode/clightning:${version} cyphernode/clightning:${x86_docker}-${version} --os linux --arch ${x86_docker} \
-  && docker manifest annotate cyphernode/clightning:${version} cyphernode/clightning:${aarch64_docker}-${version} --os linux --arch ${aarch64_docker} \
-  && docker manifest push -p cyphernode/clightning:${version}
+  docker manifest create cyphernode/specter:${version} \
+                         cyphernode/specter:${x86_docker}-${version} \
+                         cyphernode/specter:${arm_docker}-${version} \
+                         cyphernode/specter:${aarch64_docker}-${version} \
+  && docker manifest annotate cyphernode/specter:${version} cyphernode/specter:${arm_docker}-${version} --os linux --arch ${arm_docker} \
+  && docker manifest annotate cyphernode/specter:${version} cyphernode/specter:${x86_docker}-${version} --os linux --arch ${x86_docker} \
+  && docker manifest annotate cyphernode/specter:${version} cyphernode/specter:${aarch64_docker}-${version} --os linux --arch ${aarch64_docker} \
+  && docker manifest push -p cyphernode/specter:${version}
 
   return $?
 }
@@ -42,7 +42,7 @@ aarch64_docker="arm64"
 #arch_docker=${aarch64_docker}
 arch_docker=${x86_docker}
 
-version="v0.9.3"
+version="v1.2.2"
 
 echo "arch_docker=$arch_docker"
 
