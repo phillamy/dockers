@@ -13,6 +13,10 @@ RUN apk add --update --no-cache \
 
 VOLUME ["/.bitcoin"]
 
+COPY --from=eclipse-mosquitto:1.6-openssl /usr/bin/mosquitto_rr /usr/bin/mosquitto_sub /usr/bin/mosquitto_pub /usr/bin/
+COPY --from=eclipse-mosquitto:1.6-openssl /usr/lib/libmosquitto* /usr/lib/
+COPY --from=eclipse-mosquitto:1.6-openssl /lib/ld-musl-* /lib/
+
 WORKDIR /usr/bin
 
 RUN wget ${URL}/SHA256SUMS \
