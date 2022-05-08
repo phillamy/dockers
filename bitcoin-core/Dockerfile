@@ -9,7 +9,8 @@ ENV URL https://bitcoincore.org/bin/bitcoin-core-${CORE_VERSION}
 RUN apk add --update --no-cache \
     curl \
     su-exec \
-    gnupg
+    gnupg \
+    jq
 
 VOLUME ["/.bitcoin"]
 
