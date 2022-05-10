@@ -10,7 +10,8 @@ RUN apk add --update --no-cache \
     curl \
     su-exec \
     gnupg \
-    jq
+    jq \
+    coreutils
 
 VOLUME ["/.bitcoin"]
 
